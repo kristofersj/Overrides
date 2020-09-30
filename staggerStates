@@ -1,0 +1,35 @@
+import * as React from "react"
+import { Override, Data } from "framer"
+
+// Learn more: https://framer.com/docs/overrides/
+
+const parentVariants = {
+    start: {},
+    move: {},
+}
+
+const children = {
+    start: {
+        x: -80,
+        opacity: 0,
+    },
+    move: {
+        x: 0,
+        opacity: 1,
+    },
+}
+
+export function List(props): Override {
+    return {
+        variants: parentVariants,
+        initial: "start",
+        animate: "move",
+        transition: { staggerChildren: 0.2 },
+    }
+}
+
+export function Item(): Override {
+    return {
+        variants: children,
+    }
+}
