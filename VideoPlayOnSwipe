@@ -1,0 +1,25 @@
+import { Override, Data, Color } from "framer"
+
+// [1]
+const data = Data({
+    currentPage: 2,
+})
+
+// [2]
+export function Video(props): Override {
+    const { name } = props
+    const isCurrentPage = data.currentPage === Number(name)
+    return {
+        autoPlay: isCurrentPage ? true : false,
+    }
+}
+
+export function Page(props): Override {
+    console.log(props)
+    return {
+        currentPage: data.currentPage,
+        onChangePage: (currentIndex) => {
+            data.currentPage = currentIndex
+        },
+    }
+}
